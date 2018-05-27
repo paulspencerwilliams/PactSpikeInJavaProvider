@@ -26,6 +26,6 @@ public class AuthControllerTest {
 
     @State("test login")
     public void returnSuccessfulLogin() {
-        when(authService.login("paul", "secret")).thenReturn(new User(123, "paul", "Paul", "Williams"));
+        when(authService.login("Paul", "Secret")).thenReturn(new User(123, "paul", "Paul", "Williams"));
     }
 }
