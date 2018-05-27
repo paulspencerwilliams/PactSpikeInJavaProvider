@@ -1,18 +1,23 @@
 package simple.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class AuthController {
-    @GetMapping("/login")
-    public User login(@RequestParam(value="username", required = false) String username,
-                      @RequestParam(value="password", required = false) String password) {
-        if ("Paul".toLowerCase().equals(username.toLowerCase())
-                && "Secret".equals(password)) {
-            return new User(123, "paul", "Paul", "Williams");
-        }
-        throw new RuntimeException("Invalid credentials");
+    private final AuthService authService;
+
+    @Autowired
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+
+    @GetMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+    public User login(HttpServletRequest request) {
+        return new User(123, "paul", "Paul", "Williams");
     }
 }
