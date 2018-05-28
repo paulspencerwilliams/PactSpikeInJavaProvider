@@ -9,6 +9,6 @@ public class AuthService {
                 && "Secret".equals(password)) {
             return new User(123, "paul", "Paul", "Williams");
         }
-        throw new RuntimeException("Invalid credentials");
+        return null;
     }
 }

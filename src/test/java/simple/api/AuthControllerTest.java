@@ -27,5 +27,6 @@ public class AuthControllerTest {
     @State("Paul exists with password Secret")
     public void returnSuccessfulLogin() {
         when(authService.login("Paul", "Secret")).thenReturn(new User(123, "paul", "Paul", "Williams"));
+        when(authService.login("Paul", "Unconcealed")).thenReturn(null);
     }
 }
