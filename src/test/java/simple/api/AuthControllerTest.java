@@ -25,8 +25,12 @@ public class AuthControllerTest {
     public final Target target = new HttpTarget(8081);
 
     @State("Paul exists with password Secret")
-    public void returnSuccessfulLogin() {
+    public void paulExistsWithPasswordSecret() {
         when(authService.login("Paul", "Secret")).thenReturn(new User(123, "paul", "Paul", "Williams"));
         when(authService.login("Paul", "Unconcealed")).thenReturn(null);
+    }
+
+    @State("No users exist")
+    public void noUsersExist() {
     }
 }
